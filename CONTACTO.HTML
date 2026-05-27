@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Neily Chávez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Yusei+Magic&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: #254117; 
+            color: #ffecf2; 
+            font-family: 'Montserrat', sans-serif; /* Montserrat para el cuerpo */
+            text-align: center;
+        }
+
+        h1 { 
+            font-family: 'Yusei Magic', sans-serif; /* Yusei Magic para títulos */
+            margin-bottom: 20px; 
+        }
+
+        /* MENÚ */
+        .menu-navegacion { 
+            background-color: #cd6183; 
+            padding: 10px 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .mini-logo { height: 45px; width: auto; }
+        .menu-enlaces { display: flex; gap: 30px; }
+        .menu-enlaces a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 16px; 
+            font-family: 'Montserrat', sans-serif; 
+        }
+
+        /* CONTENIDO */
+        .contenedor-principal { padding: 40px 20px; }
+        .foto-principal {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .contenedor-redes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .boton-red {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            background-color: #cd6183;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.3s;
+        }
+
+        .boton-red:hover {
+            background-color: #e4acaf;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="menu-navegacion">
+        <img src="imagenes/logo.png" alt="Logo" class="mini-logo">
+        <div class="menu-enlaces">
+            <a href="INDEX.html">Inicio</a>
+            <a href="SOBRE_MI.html">Conóceme</a>
+            <a href="PORYECTOS.html">Trabajos</a>
+            <a href="CONTACTO.HTML">Contacto</a>
+        </div>
+    </nav>
+
+    <div class="contenedor-principal">
+        <img src="imagenes/LOGO.png" alt="Neily Chávez" class="foto-principal">
+
+        <h1>¡Me puedesencontrar por aquí!</h1>
+        <p>Para que conozcas más sobre mis trabajos.</p>
+
+        <div class="contenedor-redes">
+            <a href="https://www.instagram.com/chavezneily?igsh=MW1za200aHptYXc2cQ%3D%3D&utm_source=qr" target="_blank" class="boton-red">Instagram</a>
+            <a href="https://www.linkedin.com/in/neily-ch%C3%A1vez-aguilar-b437222b0" target="_blank" class="boton-red">LinkedIn</a>
+            <a href="mailto:neilychavez.design@gmail.com?subject=Contacto desde mi portafolio" class="boton-red">Correo</a>
+        
+    </div>
+
+</body>
+</html>

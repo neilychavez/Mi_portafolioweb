@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos | Neily Chávez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Yusei+Magic&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: #97a273; 
+            color: #ffecf2; 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden;
+            background-image: radial-gradient(#97a273 0.5px, #254117 0.5px);
+            background-size: 20px 20px;
+        }
+
+        /* MENÚ */
+        .menu-navegacion {
+            position: sticky; top: 0; background-color: #cd6183;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 40px; z-index: 2000; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mini-logo { height: 45px; }
+        .menu-enlaces { display: flex; gap: 35px; }
+        .menu-enlaces a { color: #254117; text-decoration: none; font-weight: 700; font-size: 14px; }
+        .menu-enlaces a.activo { color: #fff; }
+
+        /* BANNERS */
+        .contenedor-banners { width: 100%; display: flex; flex-direction: column; margin-bottom: 40px; }
+        .banner-categoria {
+            width: 100%; padding: 30px; background-color: rgba(0,0,0,0.2);
+            border: none; border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #ffecf2; font-family: 'Yusei Magic', sans-serif; font-size: 24px;
+            cursor: pointer; text-align: center; transition: 0.3s;
+        }
+        .banner-categoria:hover, .banner-categoria.activo { background-color: #e4acaf; color: #254117; }
+
+        /* CONTENIDO PROYECTOS */
+        .seccion-proyecto {
+            display: none;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+        }
+        .seccion-proyecto.activa { display: block; }
+
+        .img-portada {
+            width: 100%; height: 400px; object-fit: cover;
+            border-radius: 15px; margin-bottom: 30px;
+        }
+
+        /* Grid principal: Texto izquierda, Galería derecha */
+        .grid-info-galeria {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .texto-brcs { text-align: left; }
+        .texto-brcs p { margin-bottom: 15px; line-height: 1.8; color: #e4acaf; }
+
+        
+.galeria-restante {
+    display: flex;         /* Cambiamos de grid a flex para que sea una fila */
+    flex-wrap: wrap;       /* Para que pasen al siguiente renglón si ya no caben */
+    gap: 10px;             /* Espacio entre cada imagen */
+    justify-content: flex-start; 
+}
+
+.galeria-restante img {
+    width: 80px;           /* Ajusta este tamaño según qué tan grandes quieras los iconos */
+    height: 80px;          /* Mismo tamaño para que sean cuadrados */
+    object-fit: contain;   /* Esto evita que se corten, las ajusta al cuadrito */
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo suave */
+}
+/* Estilo específico para las imágenes de Dulce Queque */
+.galeria-grande {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.galeria-grande img {
+    width: 200px;        /* Aquí aumentas el tamaño (originalmente tenías 80px) */
+    height: auto;        /* Esto hace que se adapten a lo ancho sin deformarse */
+    border-radius: 15px;
+    transition: 0.3s;    /* Un efecto suave al pasar el mouse */
+}
+galeria-fotografia {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.galeria-fotografia img {
+    width: 180px; /* Tamaño diferente para Fotografía */
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.2); /* Un toque extra para fotos */
+}
+        @media (max-width: 768px) {
+            .grid-info-galeria { grid-template-columns: 1fr; }
+        }
+
+        .img-final-grande {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    border-radius: 15px;
+}
+    </style>
+</head>
+<body>
+
+    <nav class="menu-navegacion">
+        <img src="imagenes/logo.png" alt="Logo" class="mini-logo">
+        <div class="menu-enlaces">
+            <a href="index.html">Inicio</a>
+            <a href="SOBRE MI.HTML">Conóceme</a>
+            <a href="PORYECTOS.HTML" class="activo">Trabajos</a>
+            <a href="CONTACTO.HTML">Contacto</a>
+        </div>
+    </nav>
+    
+    <div class="contenedor-banners">
+        <button class="banner-categoria activo" onclick="mostrar('branding')">BRANDING</button>
+        <button class="banner-categoria" onclick="mostrar('redes')">SOCIAL MEDIA</button>
+        <button class="banner-categoria" onclick="mostrar('foto')">FOTOGRAFÍA</button>
+    </div>
+
+    <div id="branding" class="seccion-proyecto activa">
+        <img src="imagenes/portada c.png" class="img-portada" alt="Portada Proyecto">
+
+        <div class="grid-info-galeria">
+            <div class="texto-brcs">
+                <p><strong>CRI-CRI:</strong></p>
+                <p>El objetivo principal fue crear una identidad visual que conectara la nostalgia de las canciones con un estilo gráfico fresco y contemporáneo. Se desarrolló un concepto basado en la alegría y lo colorido. El resultado final es una propuesta que no solo respeta al personaje, sino que lo posiciona como un ícono en los medios digitales de igual forma se soluciono el problema de la señaletica dentro del parque mejorando la distribución y posición de estas además de la legibilidad.</p>
+            </div>
+<img src="imagenes/113.png" class="img-final-grande" alt="Cierre proyecto">
+            <div class="galeria-restante">
+                <img src="imagenes/precaucion.png" alt="Detalle">
+                <img src="imagenes/punto de reunion.png" alt="Detalle">
+                <img src="imagenes/alto voltaje.png" alt="Detalle">
+                <img src="imagenes/basura.png" alt="Detalle">
+                <img src="imagenes/extintor.png" alt="Detalle">
+            </div>
+        </div>
+    </div>
+
+    <div id="redes" class="seccion-proyecto">
+        <img src="imagenes/dulce queque.png" class="img-portada" alt="Portada Proyecto">
+
+        <div class="grid-info-galeria">
+            <div class="texto-brcs">
+                <p><strong>DULCE QUEQUE:</strong></p>
+                <p> Busca destacar su diferenciación a través de la creatividad y personalización de los postres, al igual que la calidad y sabor con una atención cercana y productos adaptados a las necesidades del cliente, teniendo presencia en redes sociales con contenido visual y estrategia de fidelización, buscando su expansión y crecimiento.</p>
+                <p>La campaña va a destacar el sabor y tamaño de los productos de Dulce Queque, con la oportunidad de enfatizar o promocionar los productos como resultado de un esfuerzo familiar; logrando promocionar los productos como el delicioso y dulce resultado del amor, y la unión familiar.</p>
+            </div>
+
+            <div class="galeria-grande">
+                <img src="imagenes/1.png" alt="Animación">
+                <img src="imagenes/3.png" alt="Detalle">
+                <img src="imagenes/ubicación 2.png" alt="Detalle">
+            </div>
+        </div>
+    </div>
+    <div id="foto" class="seccion-proyecto">
+    <img src="imagenes/SDR18.jpeg" class="img-portada" alt="Portada Proyecto">
+
+        <div class="grid-info-galeria">
+            <div class="texto-brcs">
+                <p><strong>Fotografía de Retrato:</strong></p>
+                <p>En la fotografía de retrato, me dieron la oportunidad de experimentar con dos mundos totalmente opuestos: el interior y el exterior. El objetivo era aprender a dominar la luz, sin importar dónde estuviera parado. En interiores, aprendí a manipular cada haz de luz para crear atmósferas controladas y detalladas; en exteriores, el reto fue aprender a trabajar con lo que la naturaleza nos da, aprovechando el sol y el entorno para darle vida a cada toma.</p>
+                <p>Para mí, esta experiencia fue clave para entender que, más allá del equipo que uses, el control de la luz es lo que realmente permite que una historia se cuente de la manera correcta. Al final, no solo se trató de tomar fotos, sino de entender cómo la luz transforma la personalidad de un retrato.</p>
+            </div>
+
+            <div class="galeria-fotografia">
+                <img src="imagenes/SDR5.jpeg" alt="Animación">
+                <img src="imagenes/SDR7.jpeg" alt="Detalle">
+                <img src="imagenes/SDR8.jpeg" alt="Detalle">
+                <img src="imagenes/SDR14.jpeg" alt="Detalle">
+                <img src="imagenes/SDR20.jpeg" alt="Detalle">
+                <img src="imagenes/SDR28.jpeg" alt="Detalle">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrar(id) {
+            document.querySelectorAll('.seccion-proyecto').forEach(s => s.classList.remove('activa'));
+            document.querySelectorAll('.banner-categoria').forEach(b => b.classList.remove('activo'));
+            document.getElementById(id).classList.add('activa');
+            event.currentTarget.classList.add('activo');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+/* CONFIGURACIÓN GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #254117; /* TU VERDE OSCURO REAL */
+    color: #ffecf2;
+    overflow-x: hidden;
+}
+
+/* PANTALLAS COMPLETAS */
+.pantalla-intro {
+    background-color: #254117; /* TU VERDE OSCURO REAL */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 3000;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* EFECTO DE DESVANECIMIENTO */
+.pantalla-intro.desvanecer {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* LOGO DE ENTRADA */
+.logo-contenedor {
+    max-width: 380px; 
+    width: 75%;
+    transition: transform 0.3s ease;
+}
+
+.logo-interactivo {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.logo-interactivo:hover {
+    transform: scale(1.04);
+}
+
+.indicador-toca {
+    position: absolute;
+    bottom: 50px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    opacity: 0.5;
+}
+
+/* PORTADA PRINCIPAL */
+.pantalla-portada {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.contenido-portada {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* DISEÑO ASIMÉTRICO DESFASADO */
+.contenedor-asimetrico {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.contenedor-asimetrico h1 {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 15vw;
+    line-height: 0.85;
+    letter-spacing: -2px;
+}
+
+/* DISEÑO ASIMÉTRICO DESFASADO */
+.contenedor-asimetrico {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative; /* ¡CLAVE! Esto crea un "marco" para que la estrella no se escape */
+}
+
+/* LA ESTRELLA FLOTANTE (Nueva Sección) */
+.contenedor-asimetrico::before {
+    content: ''; /* Obligatorio para elementos decorativos */
+    position: absolute;
+    
+    /* MODIFICACIÓN: POSICIÓN DE LA ESTRELLA */
+    left: 6vw; /* Se sale un poquito de la pantalla a la izquierda, como en tu boceto */
+    top: 50%; /* La bajamos un poco para que flote entre "PORTA" y "FOLIO" */
+    
+    /* MODIFICACIÓN: TAMAÑO DE LA ESTRELLA */
+    width: 15vw; /* Se escala según el ancho de la pantalla, ideal para responsivo */
+    height: 15vw; /* La hacemos cuadrada para que no se deforme */
+    
+    /* MODIFICACIÓN: COLOR Y ROTACIÓN */
+    background-image: url('imagenes/estrella.png'); /* <--- CAMBIA AQUÍ SI ES PNG */
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* COLOR ROSA PASTEL: Usamos un filtro para pintar la imagen en vivo sin editarla */
+    filter: drop-shadow(0 0 1px #e3a2b3) brightness(0) saturate(100%) invert(88%) sepia(8%) saturate(1611%) hue-rotate(301deg) brightness(97%) contrast(93%);
+    
+    opacity: 0.3; /* Un toque de transparencia para que sea sutil */
+    transform: rotate(-15deg); /* Le damos esa inclinación juguetona de tu boceto */
+    z-index: -1; /* ¡SÚPER IMPORTANTE! Esto la manda detrás de los textos */
+}
+
+/* "PORTA" alineado a la izquierda y TU ROSA REAL */
+.txt-porta {
+    text-align: left;
+    color: #e4acaf; 
+    padding-left: 5vw;
+}
+
+/* "FOLIO" alineado a la derecha y TU VERDE CLARO REAL */
+.txt-folio {
+    text-align: right;
+    color: #97a273; 
+    padding-right: 5vw;
+}
+
+/* FIRMA ABAJO A LA DERECHA */
+.bloque-firma {
+    align-self: flex-end;
+    text-align: right;
+    padding-right: 6vw;
+}
+
+.nombre-autor {
+    font-size: 24px;
+    font-weight: 700;
+    color: #e4acaf; /* Tu rosa real */
+    letter-spacing: 1px;
+}
+
+.subtitulo-carrera {
+    font-size: 12px;
+    opacity: 0.7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* BARRA DE MENÚ COLOR VERDE CLARO CON TRANSPARENCIA */
+.menu-navegacion {
+    position: sticky;
+    top: 0;
+    background-color: #cd6183; /* Tu verde claro real */
+    backdrop-filter: blur(8px);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    z-index: 2000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mini-logo {
+    height: 50px; 
+    width: auto;
+    display: block;
+}
+
+.menu-enlaces {
+    display: flex;
+    gap: 35px;
+}
+
+/* Letras del menú cambian a tu verde oscuro para legibilidad */
+.menu-enlaces a {
+    color: #254117; 
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.menu-enlaces a:hover, .menu-enlaces a.activo {
+    opacity: 1;
+    color: #ffecf2; 
+}
+/* ESTILO DEL BOTÓN DE LA PORTADA */
+.boton-cta {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 30px;
+    background-color: #cd6183; /* El rosa de tu menú */
+    color: #254117; /* El verde oscuro para que contraste y se lea perfecto */
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 50px; /* Bordes completamente redondeados y estéticos */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto Hover (Cuando pasas el mouse encima) */
+.boton-cta:hover {
+    background-color: #ffecf2; /* Cambia a blanco brillante */
+    color: #254117;
+    transform: translateY(-3px); /* Flota un poquito hacia arriba */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* RESPONSIVO MÓVIL */
+@media (max-width: 768px) {
+    .menu-navegacion { padding: 10px 20px; }
+    .menu-enlaces { gap: 15px; }
+    .menu-enlaces a { font-size: 12px; }
+    .mini-logo { height: 32px; }
+    
+    .contenedor-asimetrico h1 { font-size: 20vw; }
+    .nombre-autor { font-size: 18px; }
+    .subtitulo-carrera { font-size: 10px; }
+    @media (max-width: 768px) {
+    /* ... (todos tus otros estilos móviles) ... */
+    
+    /* AJUSTE MÓVIL DE LA ESTRELLA */
+    .contenedor-asimetrico::before {
+        width: 18vw; /* Un poco más grande para que se note en pantalla chica */
+        height: 18vw;
+        left: 5vw; /* No tan salida */
+        top: 60%;
+        opacity: 0.4; /* Le subimos un poco la opacidad para que resalte más en el fondo oscuro */
+    }
+}
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS PARA LA PÁGINA CONÓCEME (SOBRE-MÍ)
+   ========================================================================== */
+
+.contenedor-pagina {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    min-height: calc(100vh - 65px);
+}
+
+.titulo-seccion {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 42px;
+    color: #e4acaf; /* Tu rosa real */
+    margin-bottom: 40px;
+}
+
+.seccion-sobremi {
+    margin-bottom: 60px;
+}
+
+.bloque-presentacion {
+    max-width: 850px;
+}
+
+.texto-destacado {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #e4acaf; /* Tu rosa real */
+    margin-bottom: 25px;
+}
+
+.texto-biografia {
+    font-size: 16px;
+    line-height: 1.8;
+    opacity: 0.85;
+}
+
+/* GRID DE HABILIDADES */
+.grid-habilidades {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tarjeta-perfil {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 35px;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-perfil:hover {
+    transform: translateY(-5px);
+}
+
+.tarjeta-perfil h3 {
+    font-family: 'Yusei Magic', sans-serif;
+    color: #97a273; /* Tu verde claro real */
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.lista-skills {
+    list-style: none;
+}
+
+.lista-skills li {
+    font-size: 15px;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 20px;
+    opacity: 0.9;
+}
+
+.lista-skills li::before {
+    content: '•';
+    color: #e4acaf;
+    position: absolute;
+    left: 0;
+    font-size: 18px;
+}
+
+.grupo-herramientas {
+    margin-bottom: 20px;
+}
+
+.grupo-herramientas h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    margin-bottom: 10px;
+}
+
+.tags-software {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags-software span {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.tag-adobe {
+    background-color: rgba(227, 162, 179, 0.15);
+    color: #e4acaf;
+    border: 1px solid rgba(227, 162, 179, 0.3);
+}
+
+.tag-tech {
+    background-color: rgba(144, 169, 118, 0.15);
+    color: #97a273;
+    border: 1px solid rgba(144, 169, 118, 0.3);
+}
+
+/* ANIMACIÓN SUAVE DE ENTRADA */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVO COMPUTADORA COMPLEMENTO */
+@media (min-width: 768px) {
+    .grid-habilidades {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+}

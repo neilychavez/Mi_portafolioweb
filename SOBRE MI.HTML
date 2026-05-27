@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conóceme | Neily Chávez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Yusei+Magic&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CONFIGURACIÓN GENERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #254117; /* Tu verde oscuro real */
+            color: #ffecf2;
+            overflow-x: hidden;
+        }
+
+        /* MENÚ SUPERIOR */
+        .menu-navegacion {
+            position: sticky;
+            top: 0;
+            background-color: #cd6183; /* Tu rosa real de fondo de menú */
+            backdrop-filter: blur(8px);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            z-index: 2000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mini-logo {
+            height: 52px; 
+            width: auto;
+            display: block;
+        }
+
+        .menu-enlaces {
+            display: flex;
+            gap: 35px;
+        }
+
+        .menu-enlaces a {
+            color: #254117; 
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-enlaces a:hover, .menu-enlaces a.activo {
+            opacity: 1;
+            color: #ffffff; 
+        }
+
+        /* ESTRUCTURA PRESENTACIÓN CON FOTO */
+        .contenedor-pagina {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .titulo-seccion {
+            font-family: 'Yusei Magic', sans-serif;
+            font-size: 70px;
+            color: #97a273; /* Tu rosa real */
+            margin-bottom: 0px;
+        }
+
+        .seccion-sobremi {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .bloque-presentacion {
+            flex: 1;
+        }
+
+        .texto-biografia {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-top: 5px; /* ¡AQUÍ! Forzamos a que el párrafo se pegue más al título */
+            margin-bottom: 20px; /* Este mantiene separados los párrafos entre sí */
+            color: #e4acaf; /* Tu rosa corporativo */
+        }
+
+        /* TRES: EL MARCO POLAROID PARA TU FOTO */
+        .contenedor-foto {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .polaroid {
+            background: #ffe4e1;
+            padding: 15px 15px 60px 15px; /* Base ancha como las Polaroid reales */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transform: rotate(8deg); /* Inclinación coqueta */
+            transition: transform 0.5s ease;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.10); /* Se endereza al pasar el mouse */
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* DOS: GRID DE HABILIDADES Y BARRAS */
+        .grid-habilidades {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .tarjeta-perfil {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 35px;
+        }
+
+        .tarjeta-perfil h3 {
+            font-family: 'Yusei Magic', sans-serif;
+            color: #97a273; /* Tu verde claro real */
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .lista-skills {
+            list-style: none;
+        }
+
+        .lista-skills li {
+            font-size: 15px;
+            margin-bottom: 14px;
+            position: relative;
+            padding-left: 20px;
+            color:#e4acaf;
+        }
+
+        .lista-skills li::before {
+            content: '•';
+            color: #e4acaf;
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+
+        /* MAQUETACIÓN DE LAS BARRAS DE SKILLS (COMO TU CV) */
+        .item-barra-skill {
+            margin-bottom: 18px;
+        }
+
+        .info-barra {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .nombre-software {
+            font-size: 15px;
+            font-weight: 500;
+            color:#e4acaf;
+        }
+
+        .nombre-software span {
+            font-size: 12px;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+
+        /* El riel gris del fondo */
+        .riel-barra {
+            width: 100%;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.08); /* Menos opacidad */
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* El relleno rosa de la barra */
+        .relleno-barra {
+            height: 100%;
+            background-color:#97a273; /* Color rosa con opacidad sutil */
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+        }
+
+        .texto-nivel {
+            font-size: 11px;
+            font-style: italic;
+            font-weight: 500;
+            color: #ffecf2;
+            letter-spacing: 0.5px;
+        }
+
+        /* ANIMACIÓN SUAVE DE ENTRADA */
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes efectoRevista {
+            from {
+                opacity: 0;
+                transform: scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .titulo-seccion {
+            animation: efectoRevista 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .texto-biografia {
+            opacity: 0;
+            animation: efectoRevista 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.4s; /* Arreglado para que tenga separación de tiempo real de 0.4 segundos */
+        }
+
+        /* RESPONSIVO COMPUTADORA Y AJUSTES MÓVIL */
+        @media (min-width: 768px) {
+            .seccion-sobremi {
+                flex-direction: row; /* Texto al lado de la foto */
+                align-items: center;
+                gap: 60px;
+            }
+            .grid-habilidades {
+                grid-template-columns: 1fr 1fr; /* Dos columnas abajo */
+            }
+        }
+
+        /* CORRECCIÓN INTERACTIVA PARA EL MENÚ EN CELULARES */
+        @media (max-width: 768px) {
+            .menu-navegacion {
+                padding: 12px 15px; /* Menos margen a los lados para ganar espacio */
+                width: 100%;
+            }
+            .menu-enlaces {
+                gap: 15px; /* Reduce la separación de los enlaces para que no se desborden */
+            }
+            .menu-enlaces a {
+                font-size: 12px; /* Texto un poquito más compacto para pantalla móvil */
+            }
+            .mini-logo {
+                height: 38px; /* Reducción de escala sutil del logo */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="menu-navegacion">
+        <div class="menu-marca">
+            <img src="imagenes/logo.png" alt="Mini Logo" class="mini-logo">
+        </div>
+        <div class="menu-enlaces">
+            <a href="index.html">Inicio</a>
+            <a href="SOBRE MI.HTML" class="activo">Conóceme</a>
+            <a href="PORYECTOS.HTML">Trabajos</a>
+            <a href="CONTACTO.HTML">Contacto</a>
+        </div>
+    </nav>
+
+    <main class="contenedor-pagina animate-fade-in">
+        
+        <h1 class="titulo-seccion">HOLA, SOY NEILY</h1>
+
+        <section class="seccion-sobremi">
+            
+            <div class="bloque-presentacion">
+                <p class="texto-biografia">
+                    Soy diseñadora gráfica, actualmente curso la licenciatura en Diseño Gráfico y Producción Digital en la universidad Cristóbal Colón (UCC).
+                </p>
+                <p class="texto-biografia">
+                    Me gusta desarrollar propuestas visuales que transmitan emociones y comuniquen de forma efectiva cada proyecto. Disfruto especialmente trabajar en productos para redes sociales, branding, fotografía y diseño para medios digitales, buscando siempre combinar creatividad, funcionalidad y una estética atractiva.
+                </p>
+            </div>
+
+            <div class="contenedor-foto">
+                <div class="polaroid">
+                    <img src="imagenes/yo.jpeg" alt="Neily Chávez">
+                </div>
+            </div>
+
+        </section>
+
+        <section class="seccion-habilidades">
+            <div class="grid-habilidades">
+                
+                <div class="tarjeta-perfil">
+                    <h3>Áreas de Enfoque</h3>
+                    <ul class="lista-skills">
+                        <li>Identidad Visual & Branding</li>
+                        <li>Diseño para Redes Sociales</li>
+                        <li>Fotografía</li>
+                        <li>Desarrollo Web</li>
+                    </ul>
+                </div>
+
+                <div class="tarjeta-perfil">
+                    <h3>Herramientas & Software</h3>
+                    <div class="contenedor-barras-software">
+                        
+                        <div class="item-barra-skill">
+                            <div class="info-barra">
+                                <div class="nombre-software">Illustrator</div>
+                            </div>
+                            <div class="riel-barra">
+                                <div class="relleno-barra" style="width: 92%;">
+                                    <span class="texto-nivel">Avanzado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-barra-skill">
+                            <div class="info-barra">
+                                <div class="nombre-software">Photoshop</div>
+                            </div>
+                            <div class="riel-barra">
+                                <div class="relleno-barra" style="width: 75%;">
+                                    <span class="texto-nivel">Intermedio</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-barra-skill">
+                            <div class="info-barra">
+                                <div class="nombre-software">InDesign</div>
+                            </div>
+                            <div class="riel-barra">
+                                <div class="relleno-barra" style="width: 70%;">
+                                    <span class="texto-nivel">Intermedio</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-barra-skill">
+                            <div class="info-barra">
+                                <div class="nombre-software">After Effects</div>
+                            </div>
+                            <div class="riel-barra">
+                                <div class="relleno-barra" style="width: 65%;">
+                                    <span class="texto-nivel">Intermedio</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-barra-skill">
+                            <div class="info-barra">
+                                <div class="nombre-software">Procreate</div>
+                            </div>
+                            <div class="riel-barra">
+                                <div class="relleno-barra" style="width: 88%;">
+                                    <span class="texto-nivel">Avanzado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-barra-skill">
+                            <div class="info-barra">
+                                <div class="nombre-software">Microsoft Office <span>(Word, Excel, PowerPoint)</span></div>
+                            </div>
+                            <div class="riel-barra">
+                                <div class="relleno-barra" style="width: 95%;">
+                                    <span class="texto-nivel">Avanzado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
